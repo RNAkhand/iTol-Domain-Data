@@ -17,21 +17,6 @@ library(stringr)
 # ===============================
 # 2. Read input files
 # ===============================
-file <- "prac_dom.xlsx"        # Give your file name here 
-#install.packages(c("readxl", "dplyr", "tidyr", "openxlsx", "stringr"))
-######################################################
-# ===============================
-# 1. Load libraries
-# ===============================
-library(readxl)
-library(dplyr)
-library(tidyr)
-library(openxlsx)
-library(stringr)
-
-# ===============================
-# 2. Read input files
-# ===============================
 file <- "prac_dom.xlsx"
 # InterPro combined table
 domain_df <- read_excel(file, sheet=1, col_types = "text")
@@ -127,4 +112,5 @@ lines <- apply(final_df_noNA, 1, function(x) {
 
 # Write to text file
 writeLines(lines, "iTOL_domains_final.txt")
+
 
