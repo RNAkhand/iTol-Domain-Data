@@ -2,7 +2,8 @@
 #RNAkhand###
 ############
 
-#install.packages(c("readxl", "dplyr", "tidyr", "openxlsx", "stringr"))
+# install packages if requires!
+install.packages(c("readxl", "dplyr", "tidyr", "openxlsx", "stringr"))
 ######################################################
 # ===============================
 # 1. Load libraries
@@ -126,3 +127,4 @@ lines <- apply(final_df_noNA, 1, function(x) {
 
 # Write to text file
 writeLines(lines, "iTOL_domains_final.txt")
+
