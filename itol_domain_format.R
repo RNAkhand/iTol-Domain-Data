@@ -53,9 +53,9 @@ domain_long <- domain_df %>%
 # ===============================
 shape_df <- shape_df %>%
   rename(
-    Shape_iTOL  = Shape_iTOL,   # already correct
-    Domain_Name = Name,         # <-- FIX
-    Hex_Code    = `Hex Code`    # <-- FIX (space needs backticks)
+    Shape_iTOL  = Shape_iTOL,   
+    Domain_Name = Name,         
+    Hex_Code    = `Hex Code`    
   )
 
 domain_long <- domain_long %>%
@@ -112,6 +112,7 @@ lines <- apply(final_df_noNA, 1, function(x) {
 
 # Write to text file
 writeLines(lines, "iTOL_domains_final.txt")
+
 
 
 
