@@ -26,7 +26,7 @@ shape_df  <- read_excel(file, sheet=2, col_types = "text")
 
 
 # ===============================
-# 2. Force ALL domain columns to character
+# 3. Force ALL domain columns to character
 # ===============================
 domain_df <- domain_df %>%
   mutate(
@@ -34,7 +34,7 @@ domain_df <- domain_df %>%
   )
 
 # ===============================
-# 3. Pivot safely (NO type conflict)
+# 4. Pivot safely (NO type conflict)
 # ===============================
 domain_long <- domain_df %>%
   pivot_longer(
@@ -49,7 +49,7 @@ domain_long <- domain_df %>%
   )
 
 # ===============================
-# 4. Join shape & color
+# 5. Join shape & color
 # ===============================
 shape_df <- shape_df %>%
   rename(
@@ -62,7 +62,7 @@ domain_long <- domain_long %>%
   left_join(shape_df, by = "Domain_Name")
 
 # ===============================
-# 5. Create iTOL string
+# 6. Create iTOL string
 # ===============================
 domain_long <- domain_long %>%
   mutate(
@@ -80,7 +80,7 @@ domain_long <- domain_long %>%
   )
 
 # ===============================
-# 6. Final wide format
+# 7. Final wide format
 # ===============================
 final_df <- domain_long %>%
   select(ID, Length, InterPro_ID, itol_string) %>%
@@ -91,13 +91,13 @@ final_df <- domain_long %>%
   arrange(ID)
 
 # ===============================
-# 7. Export Excel
+# 8. Export Excel
 # ===============================
 write.xlsx(final_df, "iTOL_domains_final.xlsx", overwrite = TRUE)
 
 
 # ===============================
-# 8. Replace NA with empty strings and export clean comma-separated text file
+# 9. Replace NA with empty strings and export clean comma-separated text file
 # ===============================
 
 # Replace NA with empty strings
@@ -112,5 +112,6 @@ lines <- apply(final_df_noNA, 1, function(x) {
 
 # Write to text file
 writeLines(lines, "iTOL_domains_final.txt")
+
 
 
